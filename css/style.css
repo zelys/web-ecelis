@@ -97,6 +97,8 @@ body {
     border: 2px solid var(--primary-blue);
     color: var(--primary-blue);
     padding: 0.5rem;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
