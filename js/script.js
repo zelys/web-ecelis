@@ -118,3 +118,51 @@ document
     card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(card);
   });
+
+// Mostrar proyecto de GitHub dinámicamente
+const repos = ["analisis-evasion", "sistema-medico"];
+
+const githubUser = "zelys";
+const container = document.getElementById("github-projects");
+container.innerHTML = ""; // Limpia el contenedor
+
+repos.forEach((repoName) => {
+  fetch(`https://api.github.com/repos/${githubUser}/${repoName}`)
+    .then((res) => res.json())
+    .then((repo) => {
+      container.innerHTML += `
+        <div class="project-card">
+          <div class="project-header">
+            <i class="fab fa-github project-icon"></i>
+            <a href="${repo.html_url}" target="_blank" class="project-title">
+              ${repo.name}
+            </a>
+          </div>
+          <p class="project-description">${
+            repo.description || "Sin descripción."
+          }</p>
+          <div class="project-footer">
+            <div class="project-tags">
+              <span class="tech-tag">${repo.language || "Lenguaje N/A"}</span>
+            </div>
+            <div class="project-stats">
+              <span title="Estrellas"><i class="fas fa-star"></i> ${
+                repo.stargazers_count
+              }</span>
+              <span title="Forks"><i class="fas fa-code-branch"></i> ${
+                repo.forks_count
+              }</span>
+              <span title="Actualizado"><i class="fas fa-clock"></i> ${new Date(
+                repo.updated_at
+              ).toLocaleDateString()}</span>
+            </div>
+            <a href="${
+              repo.html_url
+            }" target="_blank" class="btn btn-secondary">
+              <i class="fab fa-github"></i> Ver en GitHub
+            </a>
+          </div>
+        </div>
+      `;
+    });
+});
