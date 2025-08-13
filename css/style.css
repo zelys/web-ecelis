@@ -256,10 +256,17 @@ body {
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
 }
 
 [data-theme="dark"] .tech-tag {
   background: var(--primary-blue);
+  color: var(--white);
+}
+
+.tech-tag:hover {
+  background: var(--secondary-blue);
   color: var(--white);
 }
 
@@ -336,11 +343,18 @@ body {
   font-size: 0.95em;
   margin-right: 0.5em;
   margin-bottom: 0.3em;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
 }
 
 [data-theme="dark"] .tech-tag {
-  background: #353b45;
+  background: #24292e;
   color: #f3f3f3;
+}
+
+.tech-tag:hover {
+  background: var(--secondary-blue);
+  color: var(--white);
 }
 
 .project-footer {
@@ -378,7 +392,7 @@ body {
 }
 
 .btn.btn-secondary:hover {
-  background: #0070f3;
+  background: var(--secondary-blue);
   color: #fff;
 }
 
@@ -398,6 +412,9 @@ body {
 .btn-primary {
   background: var(--primary-blue);
   color: var(--white);
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
 }
 
 .btn-primary:hover {
